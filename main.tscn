@@ -1,0 +1,162 @@
+[gd_scene load_steps=16 format=3 uid="uid://06w7sgpv2oua"]
+
+[ext_resource type="Texture2D" uid="uid://dh7f6fmimcvn2" path="res://BG.png" id="2_cejjh"]
+[ext_resource type="Script" path="res://SpotLight.gd" id="5_qmlu2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hvf6w"]
+sky_top_color = Color(0.176471, 0.364706, 0.878431, 1)
+sky_horizon_color = Color(0.568627, 0.609804, 0.771569, 1)
+ground_bottom_color = Color(0.0980392, 0.0745098, 0.207843, 1)
+ground_horizon_color = Color(0.568627, 0.609804, 0.771569, 1)
+
+[sub_resource type="Sky" id="Sky_x7mr4"]
+sky_material = SubResource("ProceduralSkyMaterial_hvf6w")
+
+[sub_resource type="Environment" id="Environment_vx5un"]
+background_mode = 2
+sky = SubResource("Sky_x7mr4")
+tonemap_mode = 2
+glow_strength = 1.23
+glow_bloom = 0.28
+glow_blend_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1okg"]
+albedo_texture = ExtResource("2_cejjh")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5tvr1"]
+size = Vector2(50, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53abc"]
+albedo_texture = ExtResource("2_cejjh")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xuyrr"]
+size = Vector2(200, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a06e"]
+distance_fade_max_distance = 1340.32
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_82ruo"]
+size = Vector2(10, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lxda"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6mxma"]
+size = Vector2(1.5, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8slt"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0, 0, 0.14902, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bt8cq"]
+size = Vector2(10, 0.5)
+
+[node name="Main" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vx5un")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 3, 3)
+
+[node name="Light" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1, -14)
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Light" groups=["light36"]]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -11.4734, 2.24711, -18)
+spot_range = 10.0
+script = ExtResource("5_qmlu2")
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Light" groups=["light36"]]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 5.86815, 2.24711, -18)
+spot_range = 10.0
+script = ExtResource("5_qmlu2")
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Light" groups=["light36"]]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 19.6562, 8.12511, -18)
+spot_range = 10.0
+script = ExtResource("5_qmlu2")
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Light" groups=["light36"]]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -25.0293, 4.49985, -18)
+spot_range = 10.0
+script = ExtResource("5_qmlu2")
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="Light" groups=["light36"]]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -14.604, 8.4214, -18)
+spot_range = 10.0
+script = ExtResource("5_qmlu2")
+
+[node name="SpotLight3D11" type="SpotLight3D" parent="Light" groups=["light36"]]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 6.59284, 8.4214, -18)
+spot_range = 10.0
+script = ExtResource("5_qmlu2")
+
+[node name="SpotLight3D12" type="SpotLight3D" parent="Light" groups=["light36"]]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -2.95584, 9.073, -11.084)
+spot_range = 15.0
+script = ExtResource("5_qmlu2")
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="Light" groups=["light36"]]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 7.41356, 17.3265, -18)
+spot_range = 10.0
+script = ExtResource("5_qmlu2")
+
+[node name="SpotLight3D13" type="SpotLight3D" parent="Light" groups=["light36"]]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -15.0105, 17.3265, -18)
+spot_range = 10.0
+script = ExtResource("5_qmlu2")
+
+[node name="BG1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.606054, 12, -35)
+material_override = SubResource("StandardMaterial3D_o1okg")
+mesh = SubResource("PlaneMesh_5tvr1")
+
+[node name="BG2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 12, -70)
+material_override = SubResource("StandardMaterial3D_53abc")
+mesh = SubResource("PlaneMesh_xuyrr")
+surface_material_override/0 = SubResource("StandardMaterial3D_0a06e")
+
+[node name="stage" type="Node3D" parent="."]
+
+[node name="stage" type="MeshInstance3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -14)
+mesh = SubResource("PlaneMesh_82ruo")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_4lxda")
+
+[node name="line_D" type="MeshInstance3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1, -14)
+mesh = SubResource("PlaneMesh_6mxma")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_h8slt")
+
+[node name="line_F" type="MeshInstance3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1, -14)
+mesh = SubResource("PlaneMesh_6mxma")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_h8slt")
+
+[node name="line_J" type="MeshInstance3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1, -14)
+mesh = SubResource("PlaneMesh_6mxma")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_h8slt")
+
+[node name="line_K" type="MeshInstance3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1, -14)
+mesh = SubResource("PlaneMesh_6mxma")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_h8slt")
+
+[node name="line_horizontal" type="MeshInstance3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("PlaneMesh_bt8cq")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_h8slt")
