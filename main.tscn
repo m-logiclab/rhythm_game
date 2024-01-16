@@ -1,7 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://06w7sgpv2oua"]
+[gd_scene load_steps=20 format=3 uid="uid://06w7sgpv2oua"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_mfhy4"]
 [ext_resource type="Texture2D" uid="uid://dh7f6fmimcvn2" path="res://BG.png" id="2_cejjh"]
+[ext_resource type="PackedScene" uid="uid://s382bkbslota" path="res://robot.tscn" id="4_vqb6h"]
+[ext_resource type="Script" path="res://addons/midi/MidiPlayer.gd" id="5_aap6k"]
 [ext_resource type="Script" path="res://SpotLight.gd" id="5_qmlu2"]
+[ext_resource type="AudioStream" uid="uid://bn6gtrkmxbodk" path="res://bass_120.wav" id="6_ksgms"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hvf6w"]
 sky_top_color = Color(0.176471, 0.364706, 0.878431, 1)
@@ -53,6 +57,7 @@ albedo_color = Color(0, 0, 0.14902, 1)
 size = Vector2(10, 0.5)
 
 [node name="Main" type="Node"]
+script = ExtResource("1_mfhy4")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vx5un")
@@ -67,13 +72,13 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 [node name="Light" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1, -14)
 
-[node name="SpotLight3D4" type="SpotLight3D" parent="Light" groups=["light36"]]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -11.4734, 2.24711, -18)
+[node name="SpotLight3D5" type="SpotLight3D" parent="Light" groups=["light36"]]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 5.86815, 2.24711, -18)
 spot_range = 10.0
 script = ExtResource("5_qmlu2")
 
-[node name="SpotLight3D5" type="SpotLight3D" parent="Light" groups=["light36"]]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 5.86815, 2.24711, -18)
+[node name="SpotLight3D8" type="SpotLight3D" parent="Light" groups=["light36"]]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -12.1318, 2.24711, -18)
 spot_range = 10.0
 script = ExtResource("5_qmlu2")
 
@@ -160,3 +165,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 mesh = SubResource("PlaneMesh_bt8cq")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_h8slt")
+
+[node name="robot_D" parent="." instance=ExtResource("4_vqb6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="robot_F" parent="." instance=ExtResource("4_vqb6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="robot_J" parent="." instance=ExtResource("4_vqb6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="robot_K" parent="." instance=ExtResource("4_vqb6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="MidiPlayer" type="Node" parent="."]
+script = ExtResource("5_aap6k")
+file = "res://beat.mid"
+playing = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ksgms")
+
+[connection signal="midi_event" from="MidiPlayer" to="." method="_on_midi_player_midi_event"]

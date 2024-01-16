@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://df6rfwbpcf210"]
+[gd_scene load_steps=4 format=3 uid="uid://df6rfwbpcf210"]
 
+[ext_resource type="Script" path="res://note.gd" id="1_f4wct"]
 [ext_resource type="Material" uid="uid://338dwe4clrnx" path="res://variation_aqua.tres" id="1_iuv45"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_qsyuu"]
 outer_radius = 0.75
 
 [node name="note" type="Node3D"]
+script = ExtResource("1_f4wct")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
